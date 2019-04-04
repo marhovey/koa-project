@@ -11,7 +11,7 @@ module.exports = {
     error: './logs/pm2-err.log',
     merge_logs: true,
     output: './logs/pm2-out.log',
-    pid_file: './pids',
+    pid_file: './pids/koa-server.pid',
     watch: false,
     max_memory_restart: '1G',
     log_date_format: 'YYYY-MM-DD HH:mm:ss',
