@@ -10,6 +10,9 @@ class Article extends Component {
   }
 
   componentDidMount () {
+    if (!this.props.appData.articleId) {
+      return this.props.history.replace('/index')
+    }
     this.setState({
       value: this.props.appData.articleId
     })
