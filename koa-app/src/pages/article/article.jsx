@@ -10,13 +10,16 @@ class Article extends Component {
   }
 
   componentDidMount () {
-
+    console.log(this.props)
+    this.setState({
+      value: this.props.appData.articleId
+    })
   }
 
   render() {
     return (
       <div className="Article">
-        <p>这里是文章想请</p>
+        <p>这里是文章{this.state.value}的详情</p>
       </div>
     );
   }
