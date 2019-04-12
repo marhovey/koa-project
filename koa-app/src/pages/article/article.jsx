@@ -10,7 +10,6 @@ class Article extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props)
     this.setState({
       value: this.props.appData.articleId
     })
