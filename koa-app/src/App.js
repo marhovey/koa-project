@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://api.marhonvey.com/api/hello')
+    axios.get('/api/helloWorld')
       .then(res => {
         this.setState({
           value: res.data.data
