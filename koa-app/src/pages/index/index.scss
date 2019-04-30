@@ -1,0 +1,109 @@
+.index{
+  .data-list{
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 15px;
+    .data-item{
+      text-align: left;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+      &:hover{
+        cursor: pointer;
+        margin-top: -5px;
+        margin-bottom: 25px;
+        -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+        -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+      }
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      .title{
+        font-size: 16px;
+        color: #333333;
+        font-weight: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-bottom: 10px;
+        line-height: 25px;
+        text-overflow: ellipsis;
+      }
+      .desc{
+        font-size: 14px;
+        line-height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+        color: #666666;
+      }
+      .info{
+        &:after{
+          content: '';
+          clear: both;
+          display: block;
+        }
+        font-size: 14px;
+        color: #515151;
+        .info-item{
+          float: left;
+          padding: 0 15px 0 0;
+          line-height: 18px;
+          margin-bottom: 5px;
+          img{
+            width: 18px;
+            padding: 0 5px 0 0;
+            float: left;
+          }
+        }
+        .tags{
+          .tag{
+            margin-right: 5px;
+            border: 1px solid #999999;
+            padding: 0 5px;
+            border-radius: 5px;
+          }
+        }
+        .time{
+          float: right;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+  .pager{
+    padding: 15px;
+    .pagination{
+      &:after{
+        display: block;
+        content: '';
+        clear: both;
+      }
+      .page-item{
+        width: 32px;
+        height: 32px;
+        float: left;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .prev,
+      .next{
+        img{
+          width: 10px;
+        }
+      }
+      .prev{
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
