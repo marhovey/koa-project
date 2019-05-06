@@ -27,11 +27,12 @@ let allServices = {
     })
   },
   getUserData: (name) => {
-    let _sql = `select * from user where name="${name}";`;
+    let _sql = `select * from ${name};`;
     return allServices.query(_sql)
   },
   addUserData: (obj) => {
-    let _sql = `insert into user set name="${obj.name}", password="${obj.password}";`;
+    let _sql = `insert into list_article(poster, \`desc\`, title) values('${obj.poster}', '${obj.desc}', '${obj.title}');`;
+    console.log(_sql)
     return allServices.query(_sql)
   }
 }

@@ -1,0 +1,51 @@
+.pager{
+  padding: 15px;
+  .pagination{
+    font-size: 14px;
+    display: inline-block;
+    border: 1px solid #666666;
+    border-radius: 4px;
+    &:after{
+      display: block;
+      content: '';
+      clear: both;
+    }
+    .page-item{
+      width: 32px;
+      height: 32px;
+      float: left;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #666666;
+      &:hover{
+        cursor: pointer;
+      }
+      &.active{
+        background-color: #666666;
+        color: #ffffff;
+      }
+      &.prev{
+        border-left: none;
+      }
+    }
+    .prev,
+    .next{
+      &.disabled{
+        &:hover{
+          cursor: not-allowed;
+        }
+      }
+      img{
+        width: 10px;
+      }
+    }
+    .prev{
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  }
+}

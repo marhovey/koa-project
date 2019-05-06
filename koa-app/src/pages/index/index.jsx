@@ -1,50 +1,26 @@
 import React, { Component } from 'react';
 import './index.scss';
 import { dateFormat } from '../../utils/utils';
+import httpServer from './http';
+import Pager from '../../components/pager/pager.jsx';
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataList: [
-        {
-          title: '标题',
-          desc: '描述描述描述描述',
-          poster: 'sss',
-          time: 1556628276700,
-          id: '2001',
-          tags: ['112', '212'],
-          viewCnt: 10,
-          commentCnt: 10
-        },
-        {
-          title: '标题',
-          desc: '描述描述描述描述',
-          poster: 'sss',
-          time: 1556628276700,
-          id: '2002',
-          tags: ['112', '212'],
-          viewCnt: 10,
-          commentCnt: 10
-        },
-        {
-          title: '标题',
-          desc: '描述描述描述描述',
-          poster: 'sss',
-          time: 1556628276700,
-          id: '2003',
-          tags: ['112', '212'],
-          viewCnt: 10,
-          commentCnt: 10
-        }
-      ],
-      totalCnt: 10,
-      pageSize: 10
+      dataList: [],
+      totalCnt: 100,
+      pageSize: 10,
+      currentPage: 1,
     };
+    this.$http = httpServer
+    for (let k of Object.keys(this.$http)) {
+      this.$http[k] = this.$http[k].bind(this);
+    }
   }
 
   componentDidMount () {
-
+    this.$http.getTableList()
   }
 
   goDetail (id) {
@@ -63,7 +39,7 @@ class Index extends Component {
   renderList () {
     return this.state.dataList.map((val, ind) => {
       return (
-        <div key={val.id} className="data-item">
+        <div key={val.id} className="data-item" onClick={() => this.goDetail(val.id)}>
           <div className="title">{val.title}</div>
           <div className="desc">{val.desc}</div>
           <div className="info">
@@ -93,8 +69,8 @@ class Index extends Component {
     })
   }
 
-  renderPages() {
-    
+  currentChange(data) {
+    console.log(data)
   }
 
   render() {
@@ -103,17 +79,10 @@ class Index extends Component {
         <div className="data-list">
           {this.renderList()}
         </div>
-        <div className="pager">
-          <div className="pagination">
-            <div className="prev page-item">
-              <img src="./imgs/next.png" alt=""/>
-            </div>
-            {this.renderPages()}
-            <div className="next page-item">
-              <img src="./imgs/next.png" alt=""/>
-            </div>
-          </div>
-        </div>
+        <Pager
+          totalCnt={this.state.totalCnt}
+          pageSize={this.state.pageSize}
+          currentChange={(data) => this.currentChange(data)}></Pager>
       </div>
     );
   }

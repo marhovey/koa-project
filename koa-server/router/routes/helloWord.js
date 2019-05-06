@@ -1,9 +1,10 @@
 const router = require('koa-router')();
 const allService = require('../../conf/mysql.config');
 router.get('/', async (ctx, next) => {
-  let results = await allService.getUserData('dx');
+  // allService.createTable('createTable');
+  let results = await allService.getUserData('list_article');
   ctx.body = JSON.stringify({
-    data: '账号：' + results[0].name + '密码：' + results[0].password,
+    data: results,
     errMsg: '操作成功',
     errCode: 0
   });
