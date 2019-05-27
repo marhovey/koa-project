@@ -12,7 +12,8 @@ class Pager extends Component {
 
   componentDidMount () {
     this.setState({
-      totalPage: Math.ceil(this.props.totalCnt / this.props.pageSize)
+      totalPage: Math.ceil(this.props.totalCnt / this.props.pageSize),
+      currentPage: this.props.currentPage
     })
   }
 

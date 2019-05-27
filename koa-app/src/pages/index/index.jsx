@@ -41,19 +41,20 @@ class Index extends Component {
       return (
         <div key={val.id} className="data-item" onClick={() => this.goDetail(val.id)}>
           <div className="title">{val.title}</div>
-          <div className="desc">{val.desc}</div>
+          <div className="desc">{val.description}</div>
           <div className="info">
             <div className="poster info-item">
               <img src="./imgs/writer.png" alt=""/>
-              {val.poster}
+              {val.writer}
             </div>
             <div className="tags info-item">
               <img src="./imgs/tags.png" alt=""/>
-              {this.renderTags(val.tags)}
+              {/*{this.renderTags(val.tags)}*/}
+              {val.tags}
             </div>
             <div className="viewCnt info-item">
               <img src="./imgs/view.png" alt=""/>
-              {val.viewCnt}
+              {val.views}
             </div>
             <div className="commentCnt info-item">
               <img src="./imgs/comment.png" alt=""/>
@@ -61,7 +62,7 @@ class Index extends Component {
             </div>
             <div className="time info-item">
               <img src="./imgs/time.png" alt=""/>
-              {dateFormat(val.time)}
+              {dateFormat(val.tWhen)}
             </div>
           </div>
         </div>
@@ -82,6 +83,7 @@ class Index extends Component {
         <Pager
           totalCnt={this.state.totalCnt}
           pageSize={this.state.pageSize}
+          currentPage={this.state.currentPage}
           currentChange={(data) => this.currentChange(data)}></Pager>
       </div>
     );

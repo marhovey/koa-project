@@ -1,8 +1,8 @@
 const router = require('koa-router')();
-const allService = require('../../conf/mysql.config');
+const util = require('../../utils/utils');
+
 router.get('/', async (ctx, next) => {
-  // allService.createTable('createTable');
-  let results = await allService.getUserData('list_article');
+  let results = await util.getArtList('art_list');
   ctx.body = JSON.stringify({
     data: results,
     errMsg: '操作成功',

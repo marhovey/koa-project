@@ -6,7 +6,7 @@ const httpServer = {
   },
   getTableList: (data) => {
     const config = {
-      url: '/api/helloWorld',
+      url: '/api/articleList',
       type: 'get',
       data: data,
       sucFunc: httpServer.getTableSucFunc,
@@ -16,7 +16,9 @@ const httpServer = {
   },
   getTableSucFunc: (res) => {
     this.setState({
-      dataList: res.data
+      dataList: res.data.data,
+      totalCnt: res.data.count,
+      currentPage: res.data.currentPage
     }, () => {
       console.log(this.state.dataList)
     })
