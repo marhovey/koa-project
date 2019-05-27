@@ -1,5 +1,5 @@
-const sql = require('../../utils/sql');
-const query = require('../../utils/query');
+const sql = require('./sql');
+const query = require('./query');
 
 const getArtList = (tableName, pageNum, pageSize) => {
   let SQL = sql(tableName), data = {};
