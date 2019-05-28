@@ -2,7 +2,7 @@ const sql = require('./sql');
 const query = require('./query');
 const utils = {
   getArtList: (tableName, pageNum, pageSize) => {
-    let SQL = sql(tableName), data = {};
+    let SQL = sql.QUERY_TABLE(tableName), data = {};
     SQL += ` limit ${pageSize} offset ${pageNum * pageSize};`
     data.data = query(SQL)
     for (var i in data.data) {
