@@ -1,8 +1,8 @@
 const router = require('koa-router')();
-const util = require('../../utils/utils');
+const utils = require('../../utils/utils');
 
 router.get('/', async (ctx, next) => {
-  let results = await util.getArtList('art_list');
+  let results = await utils.getArtList('art_list');
   ctx.body = JSON.stringify({
     data: results,
     errMsg: '操作成功',
