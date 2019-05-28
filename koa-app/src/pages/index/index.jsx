@@ -78,7 +78,7 @@ class Index extends Component {
       currentPage: data
     }, () => {
       this.$http.getTableList({
-        pageNum: this.state.pageNum,
+        pageNum: this.state.currentPage,
         pageSize: this.state.pageSize
       })
     })
