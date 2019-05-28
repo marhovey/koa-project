@@ -20,7 +20,10 @@ class Index extends Component {
   }
 
   componentDidMount () {
-    this.$http.getTableList()
+    this.$http.getTableList({
+      pageNum: this.state.pageNum,
+      pageSize: this.state.pageSize
+    })
   }
 
   goDetail (id) {
@@ -71,7 +74,14 @@ class Index extends Component {
   }
 
   currentChange(data) {
-    console.log(data)
+    this.setState({
+      currentPage: data
+    }, () => {
+      this.$http.getTableList({
+        pageNum: this.state.pageNum,
+        pageSize: this.state.pageSize
+      })
+    })
   }
 
   render() {
