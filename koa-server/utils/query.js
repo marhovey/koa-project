@@ -16,8 +16,8 @@ const query = (sql, val) => {
             reject(err)
           } else {
             resolve(fields)
-            connection.release()
           }
+          connection.release()
         })
       }
     })
