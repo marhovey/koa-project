@@ -8,7 +8,8 @@ const utils = {
     for (var i in data.data) {
       data.commentCnt = await query(`select count(*) from comments where art_id=${data.data[i].art_id};`)
     }
-    data.count = await query(`select count(*) from ${tableName};`)
+    let count = await query(`select count(*) as count from ${tableName};`)
+    data.count = count.count
     data.currentPage = pageNum
     return data
   }
