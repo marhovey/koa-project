@@ -24,6 +24,4 @@ const query = (sql, val) => {
   })
 }
 
-module.exports = {
-  query
-}
+module.exports = query
