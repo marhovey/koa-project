@@ -31,7 +31,8 @@ class Index extends Component {
     this.props.history.push('/detail')
   }
 
-  renderTags(data) {
+  renderTags(tags) {
+    let data = tags.split(";")
     return data.map((val, ind) => {
       return (
         <span key={ind} className="tag">{val}</span>
@@ -52,8 +53,7 @@ class Index extends Component {
             </div>
             <div className="tags info-item">
               <img src="./imgs/tags.png" alt=""/>
-              {/*{this.renderTags(val.tags)}*/}
-              {val.tags}
+              {this.renderTags(val.tags)}
             </div>
             <div className="viewCnt info-item">
               <img src="./imgs/view.png" alt=""/>
