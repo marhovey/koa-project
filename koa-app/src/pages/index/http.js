@@ -6,7 +6,7 @@ const httpServer = {
   },
   getTableList: (data) => {
     const config = {
-      url: '/api/articleList',
+      url: `/api/articleList?pageNum=${data.pageNum}&pageSize=${data.pageSize}`,
       type: 'get',
       data: data,
       sucFunc: httpServer.getTableSucFunc,
