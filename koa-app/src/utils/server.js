@@ -46,7 +46,6 @@ let server = (data) => {
     method: data.type,
     data: data.data
   }).then(res => {
-    console.log(res)
     if (res.data.errCode === 0) {
       data.sucFunc(res.data)
     } else {

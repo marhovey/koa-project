@@ -13,7 +13,7 @@ class Index extends Component {
       pageSize: 10,
       currentPage: 1,
     };
-    this.$http = httpServer
+    this.$http = httpServer()
     for (let k of Object.keys(this.$http)) {
       this.$http[k] = this.$http[k].bind(this);
     }
