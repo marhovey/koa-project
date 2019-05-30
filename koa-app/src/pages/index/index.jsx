@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './index.scss';
 import { dateFormat } from '../../utils/utils';
-import httpServer from './http';
 import Pager from '../../components/pager/pager.jsx';
+import server from '../../utils/server';
 
 class Index extends Component {
   constructor(props) {
@@ -29,6 +29,29 @@ class Index extends Component {
   goDetail (id) {
     this.props.articleId(id)
     this.props.history.push('/detail')
+  }
+
+  baseErrFunc () {
+    console.log('')
+  }
+  getTableList (data) {
+    const config = {
+      url: `/api/articleList?pageNum=${data.pageNum}&pageSize=${data.pageSize}`,
+      type: 'get',
+      data: data,
+      sucFunc: this.getTableSucFunc,
+      errFunc: this.baseErrFunc
+    }
+    server(config)
+  }
+  getTableSucFunc (res) {
+    this.setState({
+      dataList: res.data.data,
+      totalCnt: res.data.count,
+      currentPage: res.data.currentPage
+    }, () => {
+      console.log(this.state.dataList)
+    })
   }
 
   renderTags(tags) {
