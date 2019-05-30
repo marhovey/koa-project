@@ -40,7 +40,7 @@ axios.interceptors.response.use(
   }
 )
 
-let server = (data) => {
+let server = function (data) {
   return axios({
     url: `${data.url}`,
     method: data.type,
