@@ -16,7 +16,7 @@ class Index extends Component {
   }
 
   componentDidMount () {
-    this.$http.getTableList({
+    this.getTableList({
       pageNum: this.state.currentPage - 1,
       pageSize: this.state.pageSize
     })
