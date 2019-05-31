@@ -44,7 +44,7 @@ class Index extends Component {
     this.setState({
       dataList: res.data.data,
       totalCnt: res.data.count,
-      currentPage: res.data.currentPage
+      currentPage: res.data.currentPage * 1 + 1
     }, () => {
       console.log(this.state.dataList)
     })
