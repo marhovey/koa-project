@@ -40,7 +40,7 @@ axios.interceptors.response.use(
   }
 )
 
-let server = function (data) {
+export server = function (data) {
   return axios({
     url: `${data.url}`,
     method: data.type,
@@ -55,4 +55,3 @@ let server = function (data) {
     data.errFunc()
   })
 }
-export default server
