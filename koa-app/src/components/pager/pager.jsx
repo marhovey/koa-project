@@ -10,6 +10,13 @@ class Pager extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      totalPage: Math.ceil(nextProps.totalCnt / nextProps.pageSize),
+      currentPage: nextProps.currentPage
+    })
+  }
+
   componentDidMount () {
     this.setState({
       totalPage: Math.ceil(this.props.totalCnt / this.props.pageSize),
