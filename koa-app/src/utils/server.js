@@ -40,7 +40,7 @@ axios.interceptors.response.use(
   }
 )
 
-export server = function (data) {
+export function server(data) {
   return axios({
     url: `${data.url}`,
     method: data.type,
