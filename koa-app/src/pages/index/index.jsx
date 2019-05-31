@@ -35,8 +35,8 @@ class Index extends Component {
       url: `/api/articleList?pageNum=${data.pageNum}&pageSize=${data.pageSize}`,
       type: 'get',
       data: data,
-      sucFunc: this.getTableSucFunc,
-      errFunc: this.baseErrFunc
+      sucFunc: this.getTableSucFunc.bind(this),
+      errFunc: this.baseErrFunc.bind(this)
     }
     server(config)
   }
