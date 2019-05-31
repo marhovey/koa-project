@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.scss';
 import { dateFormat } from '../../utils/utils';
 import Pager from '../../components/pager/pager.jsx';
-import server from '../../utils/server';
+import { server } from '../../utils/server';
 
 class Index extends Component {
   constructor(props) {
