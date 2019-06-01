@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
-import './article.less';
+import './article.scss';
+import httpServer from './http'
 
 class Article extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
+      article: {},
     };
+    this.$http = httpServer()
+    for (let i of Object.keys(this.$http)) {
+      this.$http[i] = this.$http[i].bind(this)
+    }
   }
 
   componentDidMount () {
-    if (!this.props.appData.articleId) {
-      return this.props.history.replace('/index')
-    }
-    this.setState({
-      value: this.props.appData.articleId
-    })
+    this.$http.getDetail(this.props.match.params.id)
   }
 
   render() {
     return (
       <div className="Article">
-        <p>这里是文章{this.state.value}的详情</p>
+        <div className="title">{this.state.article.title}</div>
+        <div
+          dangerouslySetInnerHTML={{__html: this.state.article.content}}></div>
       </div>
     );
   }

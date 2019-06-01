@@ -2,52 +2,33 @@ import React, { Component } from 'react';
 import './index.scss';
 import { dateFormat } from '../../utils/utils';
 import Pager from '../../components/pager/pager.jsx';
-import { server } from '../../utils/server';
+import httpServer from './http';
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dataList: [],
-      totalCnt: 100,
+      totalCnt: 0,
       pageSize: 10,
       currentPage: 1,
     };
+    this.$http = httpServer()
+    for (let i of Object.keys(this.$http)) {
+      this.$http[i] = this.$http[i].bind(this)
+    }
   }
 
   componentDidMount () {
-    this.getTableList({
+    this.$http.getTableList({
       pageNum: this.state.currentPage - 1,
       pageSize: this.state.pageSize
     })
+    console.log('mounted index')
   }
 
   goDetail (id) {
-    this.props.articleId(id)
-    this.props.history.push('/detail')
-  }
-
-  baseErrFunc () {
-    console.log('')
-  }
-  getTableList (data) {
-    const config = {
-      url: `/api/articleList?pageNum=${data.pageNum}&pageSize=${data.pageSize}`,
-      type: 'get',
-      data: data,
-      sucFunc: this.getTableSucFunc.bind(this),
-      errFunc: this.baseErrFunc.bind(this)
-    }
-    server(config)
-  }
-  getTableSucFunc (res) {
-    this.setState({
-      dataList: res.data.data,
-      totalCnt: res.data.count,
-      currentPage: res.data.currentPage * 1 + 1
-    }, () => {
-      console.log(this.state.dataList)
-    })
+    this.props.history.push(`/detail/${id}`)
   }
 
   renderTags(tags) {
@@ -62,7 +43,7 @@ class Index extends Component {
   renderList () {
     return this.state.dataList.map((val, ind) => {
       return (
-        <div key={val.id} className="data-item" onClick={() => this.goDetail(val.id)}>
+        <div key={val.id} className="data-item" onClick={() => this.goDetail(val.art_id)}>
           <div className="title">{val.title}</div>
           <div className="desc">{val.description}</div>
           <div className="info">
@@ -96,7 +77,7 @@ class Index extends Component {
     this.setState({
       currentPage: data
     }, () => {
-      this.getTableList({
+      this.$http.getTableList({
         pageNum: this.state.currentPage - 1,
         pageSize: this.state.pageSize
       })

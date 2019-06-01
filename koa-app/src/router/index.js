@@ -9,7 +9,7 @@ const routes = (
       <Redirect to="/index"/>
     )}/>
     <Route path="/index" component={Index} />
-    <Route path="/detail" component={Article}/>
+    <Route path="/detail/:id" component={Article}/>
   </HashRouter>
 )
 
